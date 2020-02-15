@@ -32,7 +32,7 @@ class login extends Component {
             [event.target.name]:event.target.value
         })
     }
-    // change
+    
 
     render() {
         const { classes } = this.props
