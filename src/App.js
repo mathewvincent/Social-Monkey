@@ -6,7 +6,7 @@ import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"
 
 //Component import
 import NavBar from "./Components/NavBar"
-
+//change
 //Page imports
 import home from './Pages/home'
 import signup from './Pages/signup'
