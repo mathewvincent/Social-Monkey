@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
+import {Link} from "react-router-dom"
+
+
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button';
+
 import PropTypes from 'prop-types';
 import Monkey from "../Images /see-no-evil-monkey.png"
+import axios from "axios"
 
 const styles = {
     rootcontainer: {
@@ -17,6 +23,9 @@ const styles = {
     formfield:{
         marginBottem:"10px",
         width:"1000px"
+    },
+    submitButton:{
+        marginTop:"15px"
     }
   };
 
@@ -33,16 +42,28 @@ class login extends Component {
         })
     }
     
+    formSubmit=(event)=>{
+        event.preventDefault();
+        const fornValue = {
+            email:this.state.email,
+            password:this.state.password
+        }
+        axios.post("https://europe-west1-socialape-d081e.cloudfunctions.net/api/login",fornValue)
+        .then( (response) =>{
+            // handle success
+            console.log(response);
+        })
+    }
 
     render() {
         const { classes } = this.props
         return (
-            <Grid container className={classes.rootcontainer}>
+                <Grid container className={classes.rootcontainer}>
                 <Grid item sm></Grid>
                 <Grid item sm>
                     <img src={Monkey} alt="Monkey with closed eyes" className={classes.icon}></img>
                     <br />
-                    <form >
+                    <form onSubmit={this.formSubmit}>
                         <TextField
                         id="email"
                         label="Email"
@@ -60,11 +81,17 @@ class login extends Component {
                         className="formfield"
                         onChange={this.onchangeHandler}
                         />
+                        <br />
+                        <br />
+                        <Button variant="contained" color="secondary" className="submitButton" type="submit">
+                        Login
+                        </Button>
                     </form>
+                    <small>don't have an account, Click <Link to="/signup">here</Link></small>
                 </Grid>
                 <Grid item sm></Grid>
             </Grid>
-        )
+           ) 
     }
 }
 

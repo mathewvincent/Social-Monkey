@@ -10,8 +10,8 @@ class NavBar extends Component {
             <div>
                 <AppBar width="35px">
                     <Toolbar className="nav-bar" >
-                        <Button color="inherit" component={Link} to="/">HOME</Button>
                         <Button color="inherit" component={Link} to="/login">Login</Button>
+                        <Button color="inherit" component={Link} to="/">HOME</Button>
                         <Button color="inherit" component={Link} to="/signup">Signup</Button>
                     </Toolbar>
                 </AppBar>
